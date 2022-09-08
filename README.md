@@ -1,2 +1,1 @@
-# youtube-clone
-Created with CodeSandbox
+Building a youtube clone with React and Material UI. 
