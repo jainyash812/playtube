@@ -1,3 +1,4 @@
+import React,{useState} from 'react';
 import "./styles.css";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -6,12 +7,16 @@ import SearchFeed from "./components/SearchFeed";
 import VideoInfo from "./components/VideoInfo";
 import Navbar from "./components/Navbar";
 export default function App() {
+  const [selectedCategory,setSelectedCategory]=useState('New');
   return (
     <BrowserRouter>
       <Box>
-        <Navbar />
+        <Navbar 
+          selectedCategoryNav={selectedCategory} 
+          setSelectedCategoryNav={(value)=>setSelectedCategory(value)} 
+        />
         <Routes>
-          <Route exact path="/" element={<HomeFeed />} />
+          <Route path="/" element={<HomeFeed selectedCategoryNav={selectedCategory} />} />
           <Route path="/video/:videoId" element={<VideoInfo />} />
           <Route path="/search/:searchText" element={<SearchFeed />} />
         </Routes>
