@@ -14,7 +14,7 @@ interface NavBarProps{
     setSelectedCategoryNav:React.Dispatch<React.SetStateAction<string>>
 }
 const Navbar = (props:NavBarProps) => {
-    const [openSideBar,setOpenSideBar]=useState(true);
+    const [openSideBar,setOpenSideBar]=useState(false);
     
   return (<Stack
         direction="row"
@@ -23,7 +23,9 @@ const Navbar = (props:NavBarProps) => {
         position: "sticky",
         top: 0,
         justifyContent: "space-between",
-        padding:"5px"
+        padding:"5px",
+        background:'#ffffff',
+        zIndex:1
         }}
     >
     <div className="logo-with-menuicon">

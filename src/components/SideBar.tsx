@@ -12,7 +12,7 @@ interface SideBarProps{
     toggleSideBar:React.Dispatch<React.SetStateAction<boolean>>
 }
 const SideBar = ({categorySelected,changeSelectedCategory,openStatus,toggleSideBar}:SideBarProps) =>{
-    
+
    return(<Paper sx={{position:'absolute',top:0,left:0,width:"15rem",height:"100vh",padding:'0 20px'}}>
             <div className="logo-with-menuicon sidebar-logo-icon">
                 <span onClick={()=>{toggleSideBar(!openStatus)}} style={{cursor:"pointer"}}>

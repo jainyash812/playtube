@@ -6,7 +6,7 @@ const Searchbar = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center",margin:'5px' }}>
       <input
-        style={{ padding: "10px", border:"1px solid #e0e0e0",width:'26rem',minWidth:'10rem' }}
+        style={{ padding: "10px", border:"1px solid #e0e0e0",width:'30rem',minWidth:'10rem' }}
         className="search-bar"
         placeholder="Search"
       />

@@ -4,10 +4,10 @@ import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeFeed from "./components/HomeFeed";
 import SearchFeed from "./components/SearchFeed";
-import VideoInfo from "./components/VideoInfo";
+import VideoInfo from "./components/VideoInformation";
 import Navbar from "./components/Navbar";
 export default function App() {
-  const [selectedCategory,setSelectedCategory]=useState('New');
+  const [selectedCategory,setSelectedCategory]=useState('Home');
   return (
     <BrowserRouter>
       <Box>
