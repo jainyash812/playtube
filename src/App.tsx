@@ -6,6 +6,7 @@ import HomeFeed from "./components/HomeFeed";
 import SearchFeed from "./components/SearchFeed";
 import VideoInfo from "./components/VideoInformation";
 import Navbar from "./components/Navbar";
+import ApiError from "./components/ApiError";
 export default function App() {
   const [selectedCategory,setSelectedCategory]=useState('Home');
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/" element={<HomeFeed selectedCategoryNav={selectedCategory} />} />
           <Route path="/video/:videoId" element={<VideoInfo />} />
           <Route path="/search/:searchText" element={<SearchFeed />} />
+          <Route path="/error" element={<ApiError />} />
         </Routes>
       </Box>
     </BrowserRouter>

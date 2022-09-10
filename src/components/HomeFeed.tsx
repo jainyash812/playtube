@@ -2,7 +2,7 @@ import React ,{useState,useEffect} from 'react';
 import { Box } from "@mui/material";
 import {fetchFromAPI} from '../helper/api-info.js';
 import VideoCard from './VideoCard';
-
+import history from 'history';
 interface HomeFeedProps{
     selectedCategoryNav:string;
 }
@@ -1653,9 +1653,12 @@ const HomeFeed = ({selectedCategoryNav}:HomeFeedProps) => {
         // .then((data)=>{
         //     setVideos(data.items);
         //     console.log(data.items);
-        // })
+        // }).catch(error=>{
+        //    history.push('/error')
+        //})
         setVideos(videosData);
     },[])
+    
   return <Box sx={{paddingTop:'2rem', background: "#f7f6f2", height: "100%",width:"100%",display:"flex",flexDirection:"row",justifyContent:"center",flexWrap:"wrap",gap:'1.5rem'}}>
             {
                 videos.map((videoDetail,idx)=>{
