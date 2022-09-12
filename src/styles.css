@@ -1,4 +1,52 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
 }
+
+/* navbar css */
+.logo-with-menuicon {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+}
+.logo-with-text {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: black;
+}
+.feature-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+/* navbar css */
+
+/* sidebar css  */
+.sidebar-logo-icon {
+  padding: 20px 0px 0px;
+}
+.sidebar-button {
+  background: white;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.sidebar-button:hover {
+  background: #e9e9e9;
+}
+.active {
+  background: #e9e9e9;
+}
+.sidebar-icon-name {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+/* sidebar css  */

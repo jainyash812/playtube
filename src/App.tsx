@@ -1,19 +1,26 @@
+import React,{useState} from 'react';
 import "./styles.css";
 import { Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeFeed from "./components/HomeFeed";
 import SearchFeed from "./components/SearchFeed";
-import VideoInfo from "./components/VideoInfo";
+import VideoInfo from "./components/VideoInformation";
 import Navbar from "./components/Navbar";
+import ApiError from "./components/ApiError";
 export default function App() {
+  const [selectedCategory,setSelectedCategory]=useState('Home');
   return (
     <BrowserRouter>
       <Box>
-        <Navbar />
+        <Navbar 
+          selectedCategoryNav={selectedCategory} 
+          setSelectedCategoryNav={(value)=>setSelectedCategory(value)} 
+        />
         <Routes>
-          <Route exact path="/" element={<HomeFeed />} />
+          <Route path="/" element={<HomeFeed selectedCategoryNav={selectedCategory} />} />
           <Route path="/video/:videoId" element={<VideoInfo />} />
           <Route path="/search/:searchText" element={<SearchFeed />} />
+          <Route path="/error" element={<ApiError />} />
         </Routes>
       </Box>
     </BrowserRouter>
