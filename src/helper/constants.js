@@ -72,7 +72,11 @@ export const videoData=[
         },
         "channelTitle": "Robert & Lea Sutanto",
         "liveBroadcastContent": "none",
-        "publishTime": "2022-09-10T02:05:54Z"
+        "publishTime": "2022-09-10T02:05:54Z",
+      },
+      "statistics":{
+        "viewCount":245,
+        "likeCount":12
       }
     },
     {
