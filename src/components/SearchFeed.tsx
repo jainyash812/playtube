@@ -12,7 +12,7 @@ const SearchFeed = () => {
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${searchText}`)
       .then((data) => {
-        setVideos(data.items);
+        setVideos(data.items.splice(1));
       })
       .catch((error) => {
         history("/error");
