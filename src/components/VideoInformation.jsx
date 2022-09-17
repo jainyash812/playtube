@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { Link, useParams } from "react-router-dom";
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Box, Stack,CircularProgress } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { fetchFromAPI } from "../helper/api-info.js";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import { Card, CardMedia, CardActionArea, CardContent } from "@mui/material";
-import {
-  videoData,
-  demoThumbnailUrl,
-  demoVideoUrl,
-  demoVideoTitle,
-  demoChannelUrl,
-  demoChannelTitle,
-} from "../helper/constants";
+//import { Card, CardMedia, CardActionArea, CardContent } from "@mui/material";
 import RecommendedVideoCard from "./RecommendedVideoCard";
 
 const VideoInformation = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { videoId } = useParams();
+  const [videoLoading,setVideoLoading]=useState(false);
+  const [rvideoLoading,setRVideoLoading]=useState(false);
 
   useEffect(() => {
+    setVideoLoading(true);
+    setRVideoLoading(true);
     fetchFromAPI(`videos?part=snippet,statistics&id=${videoId}`)
       .then((data) => {
-          setVideoDetail(data.items[0])
-          //console.log(data.items[0])
+          setTimeout(()=>{
+              setVideoLoading(false);
+          },2000);
+          setVideoDetail(data.items[0]);
       })
 
       fetchFromAPI(`search?part=snippet,statistics&relatedToVideoId=${videoId}&type=video`)
       .then((data) => {
+          setTimeout(()=>{
+              setRVideoLoading(false);
+          },2000);
           setVideos(data.items);
         })
     
@@ -44,14 +45,11 @@ const VideoInformation = () => {
   const viewCount = !!videoDetail ? videoDetail.statistics.viewCount : "2457855";
   const likeCount = !!videoDetail ? videoDetail.statistics.likeCount : "234";
 
-  if (!!videoDetail && !videoDetail.snippet) {
-    return <>Loading .....</>;
-  }
   return (
     <Box sx={{ background: "#f7f6f2", width: "100%" }}>
       <Stack
         direction={{ xs: "column", md: "row" }}
-        sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
+        sx={{ display: "flex", flexDirection: "row", justifyContent: "center"}}
       >
         <Box
           sx={{
@@ -60,14 +58,21 @@ const VideoInformation = () => {
             justifyContent: "center",
           }}
         >
-          <Box
-            sx={{
-              width: "100%",
-              position: "sticky",
-              top: "86px",
-              padding: "1.3rem",
-            }}
-          >
+            {(videoLoading && rvideoLoading) ? <Box 
+                    sx={{color:'red',display: 'flex',width: '100vw',
+                    height: '91vh',
+                    justifyContent: 'center',
+                    alignItems: 'center'}}>
+                        <CircularProgress sx={{height:'100vh',width:'100vw'}} />
+                        </Box>:<>
+                        <Box
+                        sx={{
+                        width: "100%",
+                        position: "sticky",
+                        top: "86px",
+                        padding: "1.3rem",
+                        }}
+                >
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               className="react-player"
@@ -129,6 +134,7 @@ const VideoInformation = () => {
               </Stack>
             </Stack>
           </Box>
+          
           <Box sx={{ marginTop: "1.3rem" }}>
             {!!videos &&
               videos.map((item, idx) => {
@@ -150,6 +156,29 @@ const VideoInformation = () => {
                 );
               })}
           </Box>
+          </>}
+
+          {/* <Box sx={{ marginTop: "1.3rem" }}>
+            {!!videos &&
+              videos.map((item, idx) => {
+                return (
+                  <>
+                    <Box
+                      key={`item${idx}`}
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      <RecommendedVideoCard searchCard={false} videoDetailInfo={item} />
+                    </Box>
+                  </>
+                );
+              })}
+          </Box> */}
         </Box>
       </Stack>
     </Box>

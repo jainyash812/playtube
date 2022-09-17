@@ -8,7 +8,7 @@ import VideoInfo from "./components/VideoInformation";
 import Navbar from "./components/Navbar";
 import ApiError from "./components/ApiError";
 export default function App() {
-  const [selectedCategory,setSelectedCategory]=useState('Home');
+  const [selectedCategory,setSelectedCategory]=useState('New');
   return (
     <BrowserRouter>
       <Box>
