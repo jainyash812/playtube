@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
@@ -15,7 +15,7 @@ interface NavBarProps{
 }
 const Navbar = (props:NavBarProps) => {
     const [openSideBar,setOpenSideBar]=useState(false);
-    
+  
   return (<Stack
         direction="row"
         alignItems="center"
