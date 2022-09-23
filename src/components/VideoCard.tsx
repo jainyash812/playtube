@@ -50,7 +50,7 @@ interface VideoCardProps {
 const VideoCard = ({ videoDetailInfo }: VideoCardProps) => {
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345 }} className='video-card'>
         <CardActionArea>
           <Link
             to={

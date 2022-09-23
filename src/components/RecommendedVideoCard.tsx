@@ -62,7 +62,7 @@ const RecommendedVideoCard = ({ videoDetailInfo,searchCard }: any) => {
     <>
       <Card
         sx={{minWidth:searchCard?800:445, maxWidth: searchCard?800:445, maxHeight: searchCard?250:150, display: "flex" }}
-        className="uiiii"
+        className={searchCard?"responsive-search-card":'ultra-search-card'}
       >
         <Link
           to={
@@ -76,6 +76,7 @@ const RecommendedVideoCard = ({ videoDetailInfo,searchCard }: any) => {
             sx={{ width: searchCard?350:200, height: searchCard?250:150 }}
             image={videoDetailInfo.snippet.thumbnails.high.url}
             alt={videoDetailInfo.snippet.title}
+            className={searchCard?'responsive-image':'ultra-responsive-image'}
           />
         </Link>
         <div style={{ padding: "1rem" }}>

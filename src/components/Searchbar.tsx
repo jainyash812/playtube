@@ -17,7 +17,6 @@ const Searchbar = () => {
                 history(`/search/${searchText}`)
             }
         }}
-        style={{ padding: "10px", border:"1px solid #e0e0e0",width:'30rem',minWidth:'10rem' }}
         className="search-bar"
         placeholder="Search"
       />

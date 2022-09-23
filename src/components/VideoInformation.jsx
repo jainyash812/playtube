@@ -8,6 +8,8 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 //import { Card, CardMedia, CardActionArea, CardContent } from "@mui/material";
 import RecommendedVideoCard from "./RecommendedVideoCard";
+import { useNavigate } from "react-router-dom";
+import {videoData} from '../helper/constants.js';
 
 const VideoInformation = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -15,6 +17,7 @@ const VideoInformation = () => {
   const { videoId } = useParams();
   const [videoLoading,setVideoLoading]=useState(false);
   const [rvideoLoading,setRVideoLoading]=useState(false);
+  const history = useNavigate();
 
   useEffect(() => {
     setVideoLoading(true);
@@ -25,7 +28,9 @@ const VideoInformation = () => {
               setVideoLoading(false);
           },2000);
           setVideoDetail(data.items[0]);
-      })
+      }).catch((error) => {
+        history("/error");
+      });
 
       fetchFromAPI(`search?part=snippet,statistics&relatedToVideoId=${videoId}&type=video`)
       .then((data) => {
@@ -33,10 +38,12 @@ const VideoInformation = () => {
               setRVideoLoading(false);
           },2000);
           setVideos(data.items);
-        })
+        }).catch((error) => {
+        history("/error");
+      });
     
-    //setVideos(videoData);
-    //setVideoDetail(videoData[0]);
+    // setVideos(videoData);
+    // setVideoDetail(videoData[0]);
     
   }, [videoId]);
 
@@ -57,6 +64,7 @@ const VideoInformation = () => {
             flexDirection: "row",
             justifyContent: "center",
           }}
+          className='video-container'
         >
             {(videoLoading && rvideoLoading) ? <Box 
                     sx={{color:'red',display: 'flex',width: '100vw',
@@ -67,9 +75,9 @@ const VideoInformation = () => {
                         </Box>:<>
                         <Box
                         sx={{
-                        width: "100%",
-                        position: "sticky",
-                        top: "86px",
+                        // width: "100%",
+                        // position: "sticky",
+                        // top: "86px",
                         padding: "1.3rem",
                         }}
                 >
@@ -79,6 +87,7 @@ const VideoInformation = () => {
               controls
               width={1000}
               height={510}
+              fallback={ <CircularProgress sx={{height:'100vh',width:'100vw'}} />}
             />
             <Typography
               color="black"
@@ -124,11 +133,11 @@ const VideoInformation = () => {
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Typography variant="body1" sx={{ display: "flex" }}>
-                  <VisibilityOutlinedIcon sx={{ marginRight: "10px" }} />
+                  <VisibilityOutlinedIcon sx={{ marginRight: "10px" }} className='visible-icon' />
                   {parseInt(viewCount).toLocaleString() ||'2345'} views...
                 </Typography>
                 <Typography variant="body1" sx={{ display: "flex" }}>
-                  <ThumbUpOutlinedIcon sx={{ marginRight: "10px" }} />
+                  <ThumbUpOutlinedIcon sx={{ marginRight: "10px" }} className='thumbs-up-icon' />
                   {parseInt(likeCount).toLocaleString()} likes
                 </Typography>
               </Stack>
