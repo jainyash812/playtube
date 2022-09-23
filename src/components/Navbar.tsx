@@ -27,6 +27,7 @@ const Navbar = (props:NavBarProps) => {
         background:'#ffffff',
         zIndex:1
         }}
+        className='navbar-container'
     >
     <div className="logo-with-menuicon">
         <span style={{cursor:"pointer"}}>
@@ -53,7 +54,7 @@ const Navbar = (props:NavBarProps) => {
     </div>
     <SearchBar />
     <div className="feature-bar">
-        <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+        {/* <Link to="/notifications" style={{ display: "flex", alignItems: "center" }}>
             <NotificationsNoneIcon sx={{ color: "black", fontSize: "25px",padding:"10px" }} />
         </Link>
         <Link to="/" style={{ display: "flex", alignItems: "center" }}>
@@ -61,7 +62,7 @@ const Navbar = (props:NavBarProps) => {
         </Link>
         <Link to="/" style={{ display: "flex", alignItems: "center" }}>
             <AccountCircleIcon sx={{ color: "black", fontSize: "25px",padding:"10px" }} />
-        </Link>
+        </Link> */}
     </div>
     
   </Stack>)

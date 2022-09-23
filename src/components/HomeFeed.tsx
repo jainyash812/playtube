@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box,CircularProgress } from "@mui/material";
 import { fetchFromAPI } from "../helper/api-info.js";
 import VideoCard from "./VideoCard";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,16 @@ const HomeFeed = ({ selectedCategoryNav }: HomeFeedProps) => {
       });
     //setVideos(videosData);
   }, [selectedCategoryNav]);
-
+  
+  if(videos.length ===0 ){
+     return <Box 
+              sx={{color:'red',display: 'flex',width: '100vw',
+                    height: '91vh',
+                    justifyContent: 'center',
+                    alignItems: 'center',background: "#f7f6f2"}}>
+               <CircularProgress sx={{height:'100vh',width:'100vw'}} />
+            </Box>
+  }
   return (
     <Box
       sx={{

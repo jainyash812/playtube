@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box ,CircularProgress} from "@mui/material";
 import { fetchFromAPI } from "../helper/api-info.js";
-import VideoCard from "./RecommendedVideoCard";
+import RecommendedVideoCard from "./RecommendedVideoCard";
 import { useNavigate } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 
@@ -19,9 +19,20 @@ const SearchFeed = () => {
       });
     //setVideos(videosData);
   }, [searchText]);
-
+  
+  if(videos.length ===0 ){
+     return <Box 
+              sx={{color:'red',display: 'flex',width: '100vw',
+                    height: '91vh',
+                    justifyContent: 'center',
+                    alignItems: 'center',background: "#f7f6f2"}}>
+               <CircularProgress sx={{height:'100vh',width:'100vw'}} />
+            </Box>
+  }
+  
   return (
     <Box
+    className='search-feed-container'
       sx={{
         padding: "2rem 0",
         background: "#f7f6f2",
@@ -36,7 +47,7 @@ const SearchFeed = () => {
       }}
     >
       {videos.map((videoDetail, idx) => {
-        return <VideoCard key={`${idx}xyz`} searchCard={true} videoDetailInfo={videoDetail} />;
+        return <RecommendedVideoCard key={`${idx}xyz`} searchCard={true} videoDetailInfo={videoDetail} />;
       })}
     </Box>
   );
