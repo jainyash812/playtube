@@ -9,7 +9,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 //import { Card, CardMedia, CardActionArea, CardContent } from "@mui/material";
 import RecommendedVideoCard from "./RecommendedVideoCard";
 import { useNavigate } from "react-router-dom";
-import {videoData} from '../helper/constants.js';
+//import {videoData} from '../helper/constants.js';
 
 const VideoInformation = () => {
   const [videoDetail, setVideoDetail] = useState(null);
