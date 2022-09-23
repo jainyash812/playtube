@@ -1,7 +1,5 @@
 # Building a YouTube Clone with React and Material UI. 
 
-## Version 1.0
-
 ### Home Screen 
 ![image](https://user-images.githubusercontent.com/73660174/189681264-e5670ef2-63e1-452c-b1ff-bf62ff9bae53.png)
 
