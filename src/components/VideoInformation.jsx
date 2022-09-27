@@ -132,13 +132,13 @@ const VideoInformation = () => {
                 </Typography>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ display: "flex" }}>
+                <Typography variant="body1" sx={{ display: "flex",alignItems:'center'}}>
                   <VisibilityOutlinedIcon sx={{ marginRight: "10px" }} className='visible-icon' />
-                  {parseInt(viewCount).toLocaleString() ||'2345'} views...
+                  {parseInt(viewCount).toLocaleString() ||'2345'}
                 </Typography>
-                <Typography variant="body1" sx={{ display: "flex" }}>
+                <Typography variant="body1" sx={{ display: "flex",alignItems:'center'  }}>
                   <ThumbUpOutlinedIcon sx={{ marginRight: "10px" }} className='thumbs-up-icon' />
-                  {parseInt(likeCount).toLocaleString()} likes
+                  {parseInt(likeCount).toLocaleString()}
                 </Typography>
               </Stack>
             </Stack>

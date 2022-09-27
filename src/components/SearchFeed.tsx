@@ -31,6 +31,12 @@ const SearchFeed = () => {
   }
   
   return (
+    <>
+    <div className="row" style={{display:'flex',flexDirection:'column',position:'fixed',top: '50%'}}>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+    </div>
     <Box
     className='search-feed-container'
       sx={{
@@ -50,6 +56,15 @@ const SearchFeed = () => {
         return <RecommendedVideoCard key={`${idx}xyz`} searchCard={true} videoDetailInfo={videoDetail} />;
       })}
     </Box>
+    <div className="row" style={{display:'flex',flexDirection:'column',position:'fixed',top: '35%',right:0}}>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+    </div>
+    </>
   );
 };
 export default SearchFeed;
