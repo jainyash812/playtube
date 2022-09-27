@@ -65,6 +65,35 @@
   cursor: pointer;
 }
 /* Video Information css*/
+
+/*Search Feed Container */
+.circle {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  margin: 5px 10px;
+  transform-origin: top center;
+  animation: spin 2s linear infinite alternate; /* 일정하게 무제한 */
+  border: 10px solid red;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0) scale(1.1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+.row {
+  display: flex;
+  flex: 0 1 100%;
+}
+
+/*Search Feed Container */
+
 /*Responsive css */
 @media screen and (max-width: 800px) {
   .navbar-container {
@@ -85,7 +114,7 @@
     max-width: 90% !important;
   }
   .ultra-responsive-image {
-    width: 260px !important;
+    width: 200px !important;
   }
   .react-player {
     width: auto !important;
@@ -93,6 +122,9 @@
   }
   .video-container {
     flex-direction: column !important;
+  }
+  .row {
+    display: none !important;
   }
 }
 @media screen and (max-width: 1000px) and (min-width: 801px) {
